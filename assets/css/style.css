@@ -580,7 +580,9 @@ p {
 ===========================*/
 .single_portfolio {
   position: relative;
-  width: 12.5%; }
+  width: 25%; 
+  border-radius: 20px;
+  padding: 25px;}
   @media only screen and (min-width: 768px) and (max-width: 991px) {
     .single_portfolio {
       width: 50%; } }
@@ -591,7 +593,9 @@ p {
     .single_portfolio {
       width: 50%; } }
   .single_portfolio img {
-    width: 100%; }
+    width: 100%; 
+    border-radius: 20px;
+    height: 90%;}
   .single_portfolio::before {
     position: absolute;
     content: '';
@@ -605,7 +609,9 @@ p {
     -moz-transition: all 0.3s ease-out 0s;
     -ms-transition: all 0.3s ease-out 0s;
     -o-transition: all 0.3s ease-out 0s;
-    transition: all 0.3s ease-out 0s; }
+    transition: all 0.3s ease-out 0s; 
+    border-radius: 20px;
+    }
   .single_portfolio .portfolio_content {
     position: absolute;
     top: 50%;
