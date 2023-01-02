@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shopping Cart</title>
+	<style>
+	</style>
+</head>
+<body>
+	<button onclick="displayCartContents()">View Cart</button>
+
+    <div id="cart-list"></div>
+
+	<script>
+        function getCartContents() {
+        var cartContents = localStorage.getItem("cart");
+        if (cartContents) {
+            return JSON.parse(cartContents);
+        } else {
+            return [];
+        }
+        }
+        function displayCartContents() {
+        var cartContents = getCartContents();
+        var cartList = document.getElementById("cart-list");
+        cartList.innerHTML = "";
+        for (var i = 0; i < cartContents.length; i++) {
+            var item = cartContents[i];
+            var itemElement = document.createElement("li");
+            itemElement.innerHTML = item.name + " - $" + item.price;
+            cartList.appendChild(itemElement);
+        }
+        }
+</script>
+</body>
+</html>
