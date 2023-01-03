@@ -19,41 +19,6 @@
     </div>
 </nav>
 <!-- Main -->
-<div class="container" style="top: 25vh;">
-    <div class="row">
-    <div class="col">
-        <div class="card" style="width: 20rem;">
-<img class="card-img-top" src="Pages/assets/img/26.webp" alt="Card image cap" width="150">
-<div class="card-block">
-    <h4 class="card-title">Orange</h4>
-    <p class="card-text">Price: $0.5</p>
-    <a href="#" data-name="Orange" data-price="0.5" data-img="Pages/assets/img/26.webp" data-id="1" class="add-to-cart btn btn-primary"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-        
-        </div>
-        </div>
-        </div>
-        <div class="col">
-        <div class="card" style="width: 20rem;">
-        <img class="card-img-top" src="https://3.imimg.com/data3/IC/JO/MY-9839190/organic-lemon-250x250.jpg" alt="Card image cap" width="150">
-        <div class="card-block">
-            <h4 class="card-title">Lemon</h4>
-            <p class="card-text">Price: $1</p>
-            <a href="#" data-name="Lemon" data-price="1" data-img="https://3.imimg.com/data3/IC/JO/MY-9839190/organic-lemon-250x250.jpg" data-id="2" class="add-to-cart btn btn-primary"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-        </div>
-        </div>
-        </div>
-        <div class="col">
-        <div class="card" style="width: 20rem;">
-        <img class="card-img-top" src="https://pbs.twimg.com/profile_images/1064394741030797313/Kj2zFV5d.jpg" alt="Card image cap" width="150">
-        <div class="card-block">
-            <h4 class="card-title">Mango</h4>
-            <p class="card-text">Price: $2</p>
-            <a href="#" data-name="Mango" data-price="2" data-img="https://pbs.twimg.com/profile_images/1064394741030797313/Kj2zFV5d.jpg" data-id="3" class="add-to-cart btn btn-primary"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
         <!-- Cart -->
         <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
@@ -175,18 +140,6 @@ var storedCart = JSON.parse(localStorage.getItem("cart"));
 // create array to hold cart items
 var cart = [];
 
-// add item to cart
-$(".add-to-cart").click(function(event){
-    event.preventDefault();
-    var name = $(this).data("name");
-    var price = Number($(this).data("price"));
-    var img = $(this).data("img");
-
-    addItemToCart(name, price, img);
-    displayCart();
-    localStorage.setItem("cart", JSON.stringify(cart));
-});
-
 // clear cart
 $(".clear-cart").click(function(){
     clearCart();
@@ -218,27 +171,6 @@ $(".show-cart").on("click", ".delete-item", function(event){
     displayCart();
     localStorage.setItem("cart", JSON.stringify(cart));
 });
-
-// item count
-$(".show-cart").on("change", ".item-count", function(event){
-    var name = $(this).data("name");
-    var count = Number($(this).val());
-    itemCount(name, count);
-    displayCart();
-    localStorage.setItem("cart", JSON.stringify(cart));
-});
-
-// add item to cart
-function addItemToCart(name, price, img){
-    for(var i in cart){
-        if(cart[i].name === name){
-            return;
-        }
-    }
-    var item = {name: name, price: price, img: img, count: 1};
-    cart.push(item);
-    saveCart();
-}
 
 // remove item from cart
 function removeItemFromCart(name){
@@ -301,21 +233,6 @@ function removeItemFromCart(name){
             cartCopy.push(itemCopy);
         }
         return cartCopy;
-    }
-
-    // update item count in cart
-    function itemCount(name, count){
-        for(var i in cart){
-            if(cart[i].name === name){
-                cart[i].count = count;
-                break;
-            }
-        }
-    }
-
-    // save cart to local storage
-    function saveCart(){
-        localStorage.setItem("cart", JSON.stringify(cart));
     }
 
     // display stored cart items on page load
