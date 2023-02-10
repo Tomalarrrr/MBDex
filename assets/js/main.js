@@ -4,6 +4,10 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+
+document.cookie = "cookies=none";
+document.cookie = "sameSite=strict";
+
 (function() {
   "use strict";
 
