@@ -1,4 +1,7 @@
 
+document.cookie = "cookies=none";
+document.cookie = "sameSite=strict";
+
 $(document).ready(function(){
 
     // retrieve stored cart items from local storage
